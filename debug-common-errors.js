@@ -24,10 +24,11 @@ Think about which debugging methods you found most useful and how you might appl
 // Description:
 // This program is intended to display a simple prompt in the console but fails to run.
 
-console.log("Welcome to the bootcamp
+console.log("Welcome to the bootcamp") 
 
 // What’s Wrong?
 
+//Added ending quotations and parentheses [syntax error]
 
 // Program B
 // Description:
@@ -35,11 +36,16 @@ console.log("Welcome to the bootcamp
 
 let numbers = [2, 4, "eight"];
 for (let i = 0; i < numbers.length; i++) {
-  let doubled = numbers[i] * 2;
-  console.log(doubled);
+  if (typeof numbers[i] === "number") {
+    let doubled = numbers[i] * 2;
+    console.log(doubled);
+  }
 }
 
 // What’s Wrong?
+
+// Arithmetic operation is attempted on a string, causing a runtime error
+// Included checking for type to the loop
 
 
 
@@ -51,12 +57,17 @@ function isPrime(num) {
   if (num < 2) return false;
   for (let i = 2; i < num; i++) {
     if (num % i === 0) {
-      return true;  // Supposed to indicate num is NOT prime
+      return false;  // Supposed to indicate num is NOT prime
     }
   }
-  return false; // Supposed to indicate num IS prime
+  return true; // Supposed to indicate num IS prime
 }
 
 console.log(isPrime(7)); // Expected true but gets false
 
 // What’s Wrong?
+
+// this is a logic error
+// the conditional (num % i === 0) checks for even numbers, which are never prime
+// so if the conditional is true, the function returns false, indicating the number is not prime
+// if the conditional is never true, the function returns true, indicating the number is prime
